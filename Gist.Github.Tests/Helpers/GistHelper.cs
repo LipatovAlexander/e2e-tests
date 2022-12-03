@@ -1,4 +1,5 @@
-﻿using Gist.Github.Model;
+﻿using Gist.Github.Extensions;
+using Gist.Github.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -27,5 +28,25 @@ public sealed class GistHelper : HelperBase
         element.SendKeys(gist.Content);
         
         Driver.FindElement(By.CssSelector(".hx_create-pr-button")).Click();
+    }
+
+    public GistData GetCreatedGist()
+    {
+        var filename = Wait
+            .Until(d => d.FindElement(By.CssSelector(".gist-blob-name")))
+            .Text;
+        var content = Wait
+            .Until(d => d.FindElement(By.CssSelector("[name=\"gist[content]\"]")))
+            .GetAttribute("value");
+        var description = Driver
+            .FindElementIfExists(By.CssSelector("div[itemprop=\"about\"]"))
+            ?.Text;
+
+        return new GistData
+        {
+            Description = description,
+            FileName = filename,
+            Content = content
+        };
     }
 }

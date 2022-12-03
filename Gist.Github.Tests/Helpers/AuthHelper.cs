@@ -1,4 +1,5 @@
-﻿using Gist.Github.Model;
+﻿using Gist.Github.Extensions;
+using Gist.Github.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
@@ -24,5 +25,12 @@ public sealed class AuthHelper : HelperBase
         Driver
             .FindElement(By.Name("commit"))
             .Click();
+    }
+
+    public string? GetUsername()
+    {
+        return Driver
+            .FindElementIfExists(By.CssSelector("meta[name=\"user-login\"]"))
+            ?.GetAttribute("content");
     }
 }
