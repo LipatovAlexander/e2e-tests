@@ -12,7 +12,7 @@ public sealed class ApplicationManager : IDisposable
         if (!StaticApplicationManager.IsValueCreated)
         {
             var newInstance = new ApplicationManager();
-            newInstance.Navigation.OpenHomePage();
+            newInstance._navigation.OpenHomePage();
             StaticApplicationManager.Value = newInstance;
         }
 
@@ -25,13 +25,12 @@ public sealed class ApplicationManager : IDisposable
         _driver.Quit();
         _driver.Dispose();
     }
-
-    public NavigationHelper Navigation { get; }
-
+    
     public AuthHelper Auth { get; }
 
     public GistHelper Gist { get; }
 
+    private readonly NavigationHelper _navigation;
     private readonly IWebDriver _driver;
     private static readonly ThreadLocal<ApplicationManager> StaticApplicationManager = new();
     
@@ -43,8 +42,9 @@ public sealed class ApplicationManager : IDisposable
         var js = (IJavaScriptExecutor) _driver;
 
         const string baseUrl = "https://gist.github.com";
-        Navigation = new NavigationHelper(_driver, wait, js, baseUrl);
-        Auth = new AuthHelper(_driver, wait, js);
-        Gist = new GistHelper(_driver, wait, js);
+        _navigation = new NavigationHelper(_driver, wait, js, baseUrl);
+        
+        Auth = new AuthHelper(_driver, wait, js, _navigation);
+        Gist = new GistHelper(_driver, wait, js, _navigation);
     }
 }

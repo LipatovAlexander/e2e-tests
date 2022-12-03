@@ -7,7 +7,8 @@ public sealed class NavigationHelper : HelperBase
 {
     private readonly string _baseUrl;
 
-    public NavigationHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor, string baseUrl) : base(driver, wait, javaScriptExecutor)
+    public NavigationHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor, string baseUrl)
+        : base(driver, wait, javaScriptExecutor)
     {
         _baseUrl = baseUrl;
     }
@@ -24,5 +25,12 @@ public sealed class NavigationHelper : HelperBase
         Driver
             .Navigate()
             .GoToUrl(_baseUrl);
+    }
+
+    public void OpenGistPage(string username, string gistId)
+    {
+        Driver
+            .Navigate()
+            .GoToUrl($"{_baseUrl}/{username}/{gistId}");
     }
 }

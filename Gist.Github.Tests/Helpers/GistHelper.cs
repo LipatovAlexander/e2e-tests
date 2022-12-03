@@ -7,12 +7,16 @@ namespace Gist.Github.Helpers;
 
 public sealed class GistHelper : HelperBase
 {
-    public GistHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor) : base(driver, wait, javaScriptExecutor)
+    public GistHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor, NavigationHelper navigation)
+        : base(driver, wait, javaScriptExecutor)
     {
+        _navigation = navigation;
     }
 
     public void CreateGist(GistData gist)
     {
+        _navigation.OpenNewGistPage();
+
         Wait
             .Until(d => d.FindElement(By.Name("gist[contents][][name]")))
             .SendKeys(gist.FileName);
@@ -28,10 +32,21 @@ public sealed class GistHelper : HelperBase
         element.SendKeys(gist.Content);
         
         Driver.FindElement(By.CssSelector(".hx_create-pr-button")).Click();
+        
+        gist.Id = Driver
+            .FindElement(By.CssSelector("meta[name=\"octolytics-dimension-gist_name\"]"))
+            .GetAttribute("content");
     }
 
-    public GistData GetCreatedGist()
+    public GistData? GetGist(string username, string id)
     {
+        _navigation.OpenGistPage(username, id);
+
+        if (Driver.Title == "Page not found · GitHub")
+        {
+            return null;
+        }
+
         var filename = Wait
             .Until(d => d.FindElement(By.CssSelector(".gist-blob-name")))
             .Text;
@@ -44,9 +59,19 @@ public sealed class GistHelper : HelperBase
 
         return new GistData
         {
+            Id = id,
             Description = description,
             FileName = filename,
             Content = content
         };
     }
+
+    public void DeleteGist(string userName, string id)
+    {
+        _navigation.OpenGistPage(userName, id);
+        Wait.Until(d => d.FindElement(By.CssSelector(".btn-danger"))).Click();
+        Driver.SwitchTo().Alert().Accept();
+    }
+    
+    private readonly NavigationHelper _navigation;
 }

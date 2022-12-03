@@ -7,12 +7,16 @@ namespace Gist.Github.Helpers;
 
 public sealed class AuthHelper : HelperBase
 {
-    public AuthHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor) : base(driver, wait, javaScriptExecutor)
+    public AuthHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor, NavigationHelper navigation)
+        : base(driver, wait, javaScriptExecutor)
     {
+        _navigation = navigation;
     }
 
     public void Login(AccountData user)
     {
+        _navigation.OpenHomePage();
+
         Driver
             .FindElement(By.LinkText("Sign in"))
             .Click();
@@ -33,4 +37,6 @@ public sealed class AuthHelper : HelperBase
             .FindElementIfExists(By.CssSelector("meta[name=\"user-login\"]"))
             ?.GetAttribute("content");
     }
+
+    private readonly NavigationHelper _navigation;
 }

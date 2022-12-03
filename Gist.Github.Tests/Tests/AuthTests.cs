@@ -15,7 +15,6 @@ public class AuthTests : TestBase
         };
 
         // Act
-        Application.Navigation.OpenHomePage();
         Application.Auth.Login(user);
 
         // Assert
