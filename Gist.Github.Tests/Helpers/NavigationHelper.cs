@@ -7,10 +7,10 @@ public sealed class NavigationHelper : HelperBase
 {
     private readonly string _baseUrl;
 
-    public NavigationHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor, string baseUrl)
+    public NavigationHelper(IWebDriver driver, WebDriverWait wait, IJavaScriptExecutor javaScriptExecutor)
         : base(driver, wait, javaScriptExecutor)
     {
-        _baseUrl = baseUrl;
+        _baseUrl = Settings.BaseUrl;
     }
 
     public void OpenHomePage()

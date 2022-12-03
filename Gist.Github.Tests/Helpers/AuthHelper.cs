@@ -15,6 +15,16 @@ public sealed class AuthHelper : HelperBase
 
     public void Login(AccountData user)
     {
+        if (IsLoggedIn())
+        {
+            if (IsLoggedIn(user.Username))
+            {
+                return;
+            }
+
+            Logout();
+        }
+    
         _navigation.OpenHomePage();
 
         Driver
@@ -31,11 +41,33 @@ public sealed class AuthHelper : HelperBase
             .Click();
     }
 
-    public string? GetUsername()
+    public void Logout()
+    {
+        if (!IsLoggedIn())
+        {
+            return;
+        }
+    
+        Driver.FindElement(By.CssSelector(".name > .avatar")).Click();
+        Driver.FindElement(By.CssSelector(".dropdown-signout")).Click();
+        Driver.FindElement(By.CssSelector(".btn")).Click();
+    }
+
+    public bool IsLoggedIn()
+    {
+        return !string.IsNullOrEmpty(GetUsername());
+    }
+
+    public bool IsLoggedIn(string username)
+    {
+        return GetUsername() == username;
+    }
+
+    private string GetUsername()
     {
         return Driver
-            .FindElementIfExists(By.CssSelector("meta[name=\"user-login\"]"))
-            ?.GetAttribute("content");
+            .FindElement(By.CssSelector("meta[name=\"user-login\"]"))
+            .GetAttribute("content");
     }
 
     private readonly NavigationHelper _navigation;

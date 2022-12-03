@@ -41,8 +41,7 @@ public sealed class ApplicationManager : IDisposable
         var wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(5));
         var js = (IJavaScriptExecutor) _driver;
 
-        const string baseUrl = "https://gist.github.com";
-        _navigation = new NavigationHelper(_driver, wait, js, baseUrl);
+        _navigation = new NavigationHelper(_driver, wait, js);
         
         Auth = new AuthHelper(_driver, wait, js, _navigation);
         Gist = new GistHelper(_driver, wait, js, _navigation);

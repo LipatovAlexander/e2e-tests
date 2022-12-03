@@ -3,18 +3,10 @@ using Gist.Github.Model;
 
 namespace Gist.Github.Tests;
 
-public class CrudTests : TestBase
+public class CrudTests : AuthBase
 {
-    private string _username = null!;
     public static readonly IReadOnlyCollection<GistData> Gists = GeneratorHelper.ReadGeneratedGists();
-
-    [OneTimeSetUp]
-    public void SetUp()
-    {
-        _username = Application.Auth.GetUsername()
-            ?? throw new InvalidOperationException();
-    }
-
+    
     [Test, TestCaseSource(nameof(Gists))]
     public void Create(GistData gist)
     {
@@ -22,7 +14,7 @@ public class CrudTests : TestBase
 
         // Act
         Application.Gist.CreateGist(gist);
-        var actualGist = Application.Gist.GetGist(_username, gist.Id)!;
+        var actualGist = Application.Gist.GetGist(Settings.Username, gist.Id)!;
 
         // Assert
         Assert.NotNull(actualGist);
@@ -37,10 +29,10 @@ public class CrudTests : TestBase
         // Arrange
 
         // Act
-        Application.Gist.DeleteGist(_username, gist.Id);
+        Application.Gist.DeleteGist(Settings.Username, gist.Id);
 
         // Assert
-        var deletedGist = Application.Gist.GetGist(_username, gist.Id);
+        var deletedGist = Application.Gist.GetGist(Settings.Username, gist.Id);
         Assert.Null(deletedGist);
     }
 }
