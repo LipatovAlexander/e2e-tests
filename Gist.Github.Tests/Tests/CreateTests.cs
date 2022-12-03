@@ -1,21 +1,12 @@
-﻿using Gist.Github.Tests.Model;
+﻿using Gist.Github.Model;
 
-namespace Gist.Github.Tests.Tests;
+namespace Gist.Github.Tests;
 
 public class CreateTests : TestBase
 {
     [Test]
     public void Create()
     {
-        var user = new AccountData
-        {
-            Username = "githubtests-itis",
-            Password = "g1thubTests"
-        };
-
-        Application.Navigation.OpenHomePage();
-        Application.Auth.Login(user);
-
         var guid = Guid.NewGuid().ToString();
         var gist = new GistData
         {

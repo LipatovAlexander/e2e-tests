@@ -1,4 +1,4 @@
-﻿namespace Gist.Github.Tests.Model;
+﻿namespace Gist.Github.Model;
 
 public sealed class GistData
 {

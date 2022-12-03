@@ -1,8 +1,8 @@
-﻿using Gist.Github.Tests.Model;
+﻿using Gist.Github.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github.Tests.Helpers;
+namespace Gist.Github.Helpers;
 
 public sealed class GistHelper : HelperBase
 {

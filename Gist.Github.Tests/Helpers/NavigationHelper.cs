@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github.Tests.Helpers;
+namespace Gist.Github.Helpers;
 
 public sealed class NavigationHelper : HelperBase
 {

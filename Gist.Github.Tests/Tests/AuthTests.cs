@@ -1,6 +1,6 @@
-﻿using Gist.Github.Tests.Model;
+﻿using Gist.Github.Model;
 
-namespace Gist.Github.Tests.Tests;
+namespace Gist.Github.Tests;
 
 public class AuthTests : TestBase
 {

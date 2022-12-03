@@ -1,19 +1,7 @@
-﻿namespace Gist.Github.Tests.Tests;
+﻿namespace Gist.Github.Tests;
 
 [TestFixture]
 public abstract class TestBase
 {
-    protected ApplicationManager Application = null!;
-
-    [SetUp]
-    public void SetUp()
-    {
-        Application = new ApplicationManager();
-    }
-    
-    [TearDown]
-    protected void TearDown()
-    {
-        Application.Stop();
-    }
+    protected readonly ApplicationManager Application = SetUpFixture.Application;
 }

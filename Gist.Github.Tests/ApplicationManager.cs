@@ -1,13 +1,41 @@
-﻿using Gist.Github.Tests.Helpers;
+﻿using Gist.Github.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github.Tests;
+namespace Gist.Github;
 
-public sealed class ApplicationManager
+public sealed class ApplicationManager : IDisposable
 {
-    public ApplicationManager()
+    public static ApplicationManager GetInstance()
+    {
+        if (!StaticApplicationManager.IsValueCreated)
+        {
+            var newInstance = new ApplicationManager();
+            newInstance.Navigation.OpenHomePage();
+            StaticApplicationManager.Value = newInstance;
+        }
+
+        return StaticApplicationManager.Value!;
+    }
+    
+    public void Dispose()
+    {
+        _driver.Close();
+        _driver.Quit();
+        _driver.Dispose();
+    }
+
+    public NavigationHelper Navigation { get; }
+
+    public AuthHelper Auth { get; }
+
+    public GistHelper Gist { get; }
+
+    private readonly IWebDriver _driver;
+    private static readonly ThreadLocal<ApplicationManager> StaticApplicationManager = new();
+    
+    private ApplicationManager()
     {
         _driver = new ChromeDriver();
         _driver.Manage().Window.Maximize();
@@ -19,20 +47,4 @@ public sealed class ApplicationManager
         Auth = new AuthHelper(_driver, wait, js);
         Gist = new GistHelper(_driver, wait, js);
     }
-
-    public void Stop()
-    {
-        Thread.Sleep(3000);
-
-        _driver.Close();
-        _driver.Quit();
-    }
-    
-    public NavigationHelper Navigation { get; }
-
-    public AuthHelper Auth { get; }
-
-    public GistHelper Gist { get; }
-
-    private readonly IWebDriver _driver;
 }
