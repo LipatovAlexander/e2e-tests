@@ -1,4 +1,6 @@
-﻿namespace Gist.Github.Tests;
+﻿using Gist.Github.Tests.Model;
+
+namespace Gist.Github.Tests.Tests;
 
 public class AuthTests : TestBase
 {
@@ -11,7 +13,7 @@ public class AuthTests : TestBase
             Password = "g1thubTests"
         };
         
-        OpenHomePage();
-        Login(user);
+        Application.Navigation.OpenHomePage();
+        Application.Auth.Login(user);
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Gist.Github.Tests;
+﻿namespace Gist.Github.Tests.Model;
 
 public sealed class AccountData
 {

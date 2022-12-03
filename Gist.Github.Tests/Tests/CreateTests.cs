@@ -1,4 +1,6 @@
-﻿namespace Gist.Github.Tests;
+﻿using Gist.Github.Tests.Model;
+
+namespace Gist.Github.Tests.Tests;
 
 public class CreateTests : TestBase
 {
@@ -11,17 +13,17 @@ public class CreateTests : TestBase
             Password = "g1thubTests"
         };
 
-        OpenHomePage();
-        Login(user);
+        Application.Navigation.OpenHomePage();
+        Application.Auth.Login(user);
 
         var guid = Guid.NewGuid().ToString();
-        var gist = new Gist
+        var gist = new GistData
         {
             FileName = $"file_{guid}",
             Description = $"description ${guid}",
             Content = $"content {guid}"
         };
-        OpenNewGistPage();
-        CreateGist(gist);
+        Application.Navigation.OpenNewGistPage();
+        Application.Gist.CreateGist(gist);
     }
 }

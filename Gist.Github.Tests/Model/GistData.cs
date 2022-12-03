@@ -1,6 +1,6 @@
-﻿namespace Gist.Github.Tests;
+﻿namespace Gist.Github.Tests.Model;
 
-public sealed class Gist
+public sealed class GistData
 {
     public required string FileName { get; init; }
     public required string Content { get; init; }
