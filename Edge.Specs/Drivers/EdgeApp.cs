@@ -14,7 +14,10 @@ public sealed class EdgeApp : IDisposable
     public EdgeApp(AppDriver appDriver)
     {
         _appDriver = appDriver;
-        _wait = new DefaultWait<AppDriver>(_appDriver);
+        _wait = new DefaultWait<AppDriver>(_appDriver)
+        {
+            Timeout = TimeSpan.FromSeconds(5)
+        };
         _wait.IgnoreExceptionTypes(typeof(WebDriverException));
     }
 
