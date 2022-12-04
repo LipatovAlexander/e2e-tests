@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github.Helpers;
+namespace GithubGists.Selenium.Helpers;
 
 public abstract class HelperBase
 {

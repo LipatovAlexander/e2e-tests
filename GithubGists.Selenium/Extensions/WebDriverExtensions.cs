@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace Gist.Github.Extensions;
+namespace GithubGists.Selenium.Extensions;
 
 public static class WebDriverExtensions
 {

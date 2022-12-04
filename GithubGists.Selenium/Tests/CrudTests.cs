@@ -1,7 +1,7 @@
-﻿using Gist.Github.Helpers;
-using Gist.Github.Model;
+﻿using GithubGists.Selenium.Helpers;
+using GithubGists.Selenium.Model;
 
-namespace Gist.Github.Tests;
+namespace GithubGists.Selenium.Tests;
 
 public class CrudTests : AuthBase
 {

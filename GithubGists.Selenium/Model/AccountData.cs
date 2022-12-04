@@ -1,4 +1,4 @@
-﻿namespace Gist.Github.Model;
+﻿namespace GithubGists.Selenium.Model;
 
 public sealed class AccountData
 {

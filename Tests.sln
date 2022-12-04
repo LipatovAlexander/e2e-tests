@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gist.Github", "Gist.Github.Tests\Gist.Github.csproj", "{6121B6F0-0C6E-4081-A476-AF7A5996A71C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GithubGists.Selenium", "GithubGists.Selenium\GithubGists.Selenium.csproj", "{6121B6F0-0C6E-4081-A476-AF7A5996A71C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GistGenerator", "GistGenerator\GistGenerator.csproj", "{9E5AAB66-52AE-4607-B698-F6B47307461E}"
 EndProject

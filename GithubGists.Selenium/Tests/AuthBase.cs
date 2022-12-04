@@ -1,6 +1,6 @@
-﻿using Gist.Github.Model;
+﻿using GithubGists.Selenium.Model;
 
-namespace Gist.Github.Tests;
+namespace GithubGists.Selenium.Tests;
 
 public abstract class AuthBase : TestBase
 {

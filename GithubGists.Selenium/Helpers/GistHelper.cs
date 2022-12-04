@@ -1,9 +1,9 @@
-﻿using Gist.Github.Extensions;
-using Gist.Github.Model;
+﻿using GithubGists.Selenium.Extensions;
+using GithubGists.Selenium.Model;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github.Helpers;
+namespace GithubGists.Selenium.Helpers;
 
 public sealed class GistHelper : HelperBase
 {

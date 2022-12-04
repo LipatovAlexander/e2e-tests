@@ -1,7 +1,7 @@
 ﻿using System.Text.Json;
-using Gist.Github.Model;
+using GithubGists.Selenium.Model;
 
-namespace Gist.Github.Helpers;
+namespace GithubGists.Selenium.Helpers;
 
 public sealed class GeneratorHelper
 {

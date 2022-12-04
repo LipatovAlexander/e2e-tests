@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace Gist.Github;
+namespace GithubGists.Selenium;
 
 public static class Settings
 {

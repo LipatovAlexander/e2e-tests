@@ -1,9 +1,9 @@
-﻿using Gist.Github.Helpers;
+﻿using GithubGists.Selenium.Helpers;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace Gist.Github;
+namespace GithubGists.Selenium;
 
 public sealed class ApplicationManager : IDisposable
 {

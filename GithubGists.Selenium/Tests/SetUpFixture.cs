@@ -1,4 +1,4 @@
-﻿namespace Gist.Github.Tests;
+﻿namespace GithubGists.Selenium.Tests;
 
 [SetUpFixture]
 public sealed class SetUpFixture
