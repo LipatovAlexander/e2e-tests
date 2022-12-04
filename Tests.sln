@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gist.Github", "Gist.Github.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GistGenerator", "GistGenerator\GistGenerator.csproj", "{9E5AAB66-52AE-4607-B698-F6B47307461E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Edge.Specs", "Edge.Specs\Edge.Specs.csproj", "{8E89084C-94F8-4B19-A53B-268ED44AF266}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{9E5AAB66-52AE-4607-B698-F6B47307461E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E5AAB66-52AE-4607-B698-F6B47307461E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E5AAB66-52AE-4607-B698-F6B47307461E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E89084C-94F8-4B19-A53B-268ED44AF266}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E89084C-94F8-4B19-A53B-268ED44AF266}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E89084C-94F8-4B19-A53B-268ED44AF266}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E89084C-94F8-4B19-A53B-268ED44AF266}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
