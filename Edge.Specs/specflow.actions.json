@@ -1,0 +1,8 @@
+{
+  "windowsAppDriver": {
+    "capabilities": {
+      "app": "C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe"
+    },
+    "WindowsAppDriverPath": "C:/Program Files/Windows Application Driver/WinAppDriver.exe"
+  }
+}
